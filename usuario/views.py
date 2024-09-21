@@ -4,4 +4,6 @@ from django.http import HttpResponse
 # Create your views here.
 
 def cadastro(request):
-    return HttpResponse('ola django')
+
+
+    return HttpResponse('ola mundo django')
