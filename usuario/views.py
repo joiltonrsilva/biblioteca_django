@@ -1,9 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from .models import Usuario
 
-# Create your views here.
+from .forms import UsuarioForm
 
-def cadastro(request):
-
-
-    return HttpResponse('ola mundo django')
+class CriarUsuario(CreateView):
+    model = Usuario
+    template_name='cadastro_usuario'
+    form_class = UsuarioForm
+    sucess_url = reverse_lazy("home")
