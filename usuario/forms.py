@@ -4,12 +4,13 @@ from .models import Usuario
 
 
 class UsuarioForm(forms.ModelForm):
-    senha1 = forms.CharField(label='Senha 1')
-    senha2 = forms.CharField(label='Senha 2')
+    username = forms.CharField(label="Usuário")
+    senha1 = forms.CharField(label='Senha 1', widget=forms.PasswordInput)
+    senha2 = forms.CharField(label='Senha 2', widget=forms.PasswordInput)
 
     class Meta:
         model = Usuario
-        fields = ("email", "usuario")
+        fields = ("email", "username")
 
     def clean_senha(self):
         senha_1 = self.cleaned_data.get("senha_1")
