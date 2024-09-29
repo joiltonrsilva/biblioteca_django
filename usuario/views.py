@@ -1,7 +1,7 @@
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from .models import Usuario
-
+from django.http import HttpResponse
 from .forms import UsuarioForm
 
 class CriarUsuario(CreateView):
@@ -9,3 +9,4 @@ class CriarUsuario(CreateView):
     template_name='cadastro_usuario.html'
     form_class = UsuarioForm
     sucess_url = reverse_lazy("home")
+   
