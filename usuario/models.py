@@ -13,8 +13,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     )
     is_active = models.BooleanField("Ativo", default=True)
 
-    USERNAME_FIELD = "cpf_cnpj"
-    REQUIRED_FIELDS = ["email"]
+    USERNAME_FIELD = "email"
+    # REQUIRED_FIELDS = ["email"]
     
     class Meta:
         verbose_name = 'Usuário'
@@ -26,3 +26,21 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
+
+class Profile(models.Model):
+    name = models.CharField(
+        max_length=60,
+    )
+    birthday = models.DateField(
+        name="Data de Nascimento"
+    )
+    user = models.OneToOneField(
+        to="usuario.Profile",
+        on_delete=models.RESTRICT,
+        related_name="profile_user_user",
+    )
+
+    class Meta:
+        ordering = ["-id"]
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfis"
