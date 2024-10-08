@@ -1,6 +1,6 @@
 from django import forms
 from django.core.validators import RegexValidator
-from .models import Usuario
+from .models import Usuario, Profile
 import re
 
 class UsuarioForm(forms.ModelForm):
@@ -14,7 +14,7 @@ class UsuarioForm(forms.ModelForm):
   
     class Meta:
         model = Usuario
-        fields = ("email", "username")
+        fields = ("email",)
     
     def clean_senha(self):
         cleaned_data = super().clean()
@@ -36,3 +36,34 @@ class UsuarioForm(forms.ModelForm):
             usuario.save()
         print(usuario)
         return usuario
+
+
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ['name', 'birthday']
+
+# class UsuarioProfileForm(forms.Form):
+#     usuario_form = UsuarioForm()
+#     Profile_form = ProfileForm()
+
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields.update(self.usuario_form.fields)
+#         self.fields.update(self.porfile_form.fields)
+
+#     def save(self, commit=True):
+#         # Salvando o usuário
+#         usuario_form = UsuarioForm(self.data)
+#         user = usuario_form.save(commit=False)
+#         if commit:
+#             user.save()
+
+#         # Salvando o perfil associado ao usuário
+#         porfile_form = ProfileForm(self.data)
+#         profile = porfile_form.save(commit=False)
+#         profile.user = user
+#         if commit:
+#             profile.save()
+
+#         return user
