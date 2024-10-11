@@ -23,23 +23,22 @@
     {% endif %}
     <form action="{% url 'cadastro-usuario' %}" method="POST"> 
       {% csrf_token %}
-      <div class="mb-3">
-        <label for={{form.username.auto_id}} class="form-label" {% if form.username.error%} has-error {% endif %}>Usuário</label>
-            {% render_field form.username class="form-control" placeholder="digite seu usuário" id=form.username.auto_id type="text"%}
-        <div id="emailHelp" class="form-text"></div>
-      </div>
       <div class="mb-3"></div>
         <label for={{form.email.auto_id}} class="form-label" {% if form.email.error%} has-error {% endif %}>Email</label>
         {% render_field form.email class="form-control" placeholder="digite seu email" id=form.email.auto_id type="email"%}
         <div id="emailHelp" class="form-text"></div>
       </div>
       <div class="mb-3">
-        <label for={{form.senha1.auto_id}}class="form-label">Senha</label>
-        {% render_field form.senha1 class="form-control" placeholder="digite a senha" id=form.senha1.auto_id type="password"%}
+        <label for={{form.password_1.auto_id}}class="form-label">Senha</label>
+        {% render_field form.password_1 class="form-control" placeholder="digite a senha" id=form.password_1.auto_id type="password"%}
       </div>
       <div class="mb-3">
-        <label for={{form.senha2.auto_id}}class="form-label" >Confirme a Senha</label>
-        {% render_field form.senha2 class="form-control" placeholder="confirme a senha" id=form.senha2.auto_id type="password"%}
+        <label for={{form.password_2.auto_id}}class="form-label" >Confirme a Senha</label>
+        {% render_field form.password_2 class="form-control" placeholder="confirme a senha" id=form.password_2.auto_id type="password"%}
+      </div>
+      <div class="mb-3"></div>
+        <label for={{form.name.auto_id}} class="form-label" {% if form.name.error%} has-error {% endif %}>Name</label>
+        {% render_field form.name class="form-control" placeholder="digite seu nome completo" id=form.name.auto_id type="form-text"%}
       </div>
       <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
