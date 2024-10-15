@@ -70,3 +70,6 @@ class Profile(models.Model):
         ordering = ["-id"]
         verbose_name = "Perfil"
         verbose_name_plural = "Perfis"
+
+    def __str__(self):
+        return self.name
