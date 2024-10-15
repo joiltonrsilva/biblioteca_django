@@ -10,14 +10,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Importanto CSS -->
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style_menu-sidebar.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style_menu-sidebar.css">
+    <link rel="stylesheet" href="../css/emprestar.css">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Projeto biblioteca</title>
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 
+
+
+<!-- <style>
+    .mensagem_content{
+        position:absolute;
+        top: 40%;
+        left: 40%;
+        text-align: center;
+        font-size: 1.6rem;
+    }
+
+    .mensagem_content img{
+        width: 100px;
+    }
+</style> -->
 
 </head>
 <body>
@@ -33,7 +49,7 @@
                 <li>
                     <div id="barraDePesquisa">
                         <div class="input-container">
-                            <input type="text" id="pesquisa_header" name="pesquisa" placeholder="pesquisa...">
+                            <input type="text" id="pesquisa_header" placeholder="pesquisa...">
                             <button id="filter-button" class="filter-icon" title="Abrir Filtros">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
@@ -66,11 +82,54 @@
 <!-- BARRAS DE MENU E SIDEBAR -->
 
 
+<!-- CONTEÚDO DE EMPRESTAR -->
+
+<form action="#" method="post" class="formulario-cadastro" >
+    <div class="container-formulario">
+        <label for="nome" class="label">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Seu nome" name="name" required autofocus>
+    </div>
+
+    <div class=container-formulario>
+        <label for="email" class="label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
+    </div>
+    <div class="container-formulario">
+        <label for="Name_book" class="label" id="bookTitle">Nome do livro</label>
+        <input type="text" class="form-control" id="Name_book" placeholder="Sangue, Suor e lágrimas" maxlength="100" required>
+        <!-- Caixa de sugestões -->
+         <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <div class="container-formulario">
+        <label for="dataEntrega" class="label">Data de entrega</label>
+        <input type="date" class="form-control" id="dataEntrega" required>
+    </div>
+
+    <div class="container-formulario">
+        <p id="dataDevolucaoLabel">Data de devolução será automaticamente definida para 60 dias após a data de entrega.</p>
+    </div>
+
+    <button type="submit" class="login-caixa">Empréstimo do livro</button>
+
+    <p id="result"></p>
+</form>
+
+
+<!-- CONTEÚDO DE EMPRESTAR -->
 
 
 
 
 
 
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/home.js" ></script>
-</body>
+    
+    <script src="/Pages_main/js/script.js"></script>
+</body> 
+</html>
