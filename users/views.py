@@ -9,6 +9,10 @@ class Home(TemplateView):
     template_name = "home.html"
 
 
+class Login(TemplateView):
+    template_name = 'login.html'
+
+
 class CreateUser(CreateView):
     model = Profile
     template_name = 'create_user.html'

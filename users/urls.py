@@ -6,4 +6,5 @@ urlpatterns = [
     path('list/', views.ListUser.as_view(), name='list-users'),
     path('edit/<int:pk>/', views.EditUser.as_view(), name='edit-user'),
     path('home/', views.Home.as_view(), name='home'),
+    path('login/', views.Login.as_view(), name='login'),
 ]
