@@ -96,3 +96,7 @@ class UserProfileForm(forms.Form):
             profile.save()
 
         return user
+
+
+class EmailAuthenticationForm(forms.Form):
+    ...
