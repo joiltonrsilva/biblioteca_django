@@ -104,6 +104,10 @@ class UserProfileForm(forms.Form):
 
 
 
+from django import forms
+from django.contrib.auth import authenticate
+from django.utils.translation import gettext_lazy as _
+
 class EmailAuthenticationForm(forms.Form):
     """
     Formulário de autenticação usando email como nome de usuário.
@@ -127,6 +131,11 @@ class EmailAuthenticationForm(forms.Form):
         "inactive": _("This account is inactive."),
     }
 
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super().__init__(*args, **kwargs)
+        self.user_cache = None
+
     def clean(self):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
@@ -146,7 +155,7 @@ class EmailAuthenticationForm(forms.Form):
         return forms.ValidationError(
             self.error_messages["invalid_login"],
             code="invalid_login",
-            params={"email": self.email_field.label},
+            params={"email": self.fields["email"].label},
         )
 
     def confirm_login_allowed(self, user):
@@ -157,6 +166,7 @@ class EmailAuthenticationForm(forms.Form):
             raise forms.ValidationError(
                 self.error_messages["inactive"], code="inactive"
             )
+
     '''class AuthenticationForm(forms.Form):
     """
     Base class for authenticating users. Extend this to get a form that accepts
