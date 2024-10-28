@@ -9,25 +9,12 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserForm(forms.ModelForm):
-    email = forms.EmailField(
-        label="Email",
-        validators=[EmailValidator(message='Digite um endereço de e-mail válido.')],
+    email = forms.EmailField(label="Email",validators=[EmailValidator(message='Digite um endereço de e-mail válido.')],required=True)
+    password_1 = forms.CharField(label='Senha', widget=forms.PasswordInput,validators=[RegexValidator( regex=r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$',
+            message="A senha deve conter pelo menos 8 caracteres, incluindo uma letra, um número e um caractere especial." )],
         required=True
     )
-    password_1 = forms.CharField(
-        label='Senha',
-        widget=forms.PasswordInput,
-        validators=[RegexValidator(
-            regex=r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$',
-            message="A senha deve conter pelo menos 8 caracteres, incluindo uma letra, um número e um caractere especial."
-        )],
-        required=True
-    )
-    password_2 = forms.CharField(
-        label='Confirme a senha',
-        widget=forms.PasswordInput,
-        required=True
-    )
+    password_2 = forms.CharField( label='Confirme a senha',widget=forms.PasswordInput, required=True)
 
     class Meta:
         model = User
@@ -103,10 +90,6 @@ class UserProfileForm(forms.Form):
         return user
 
 
-
-from django import forms
-from django.contrib.auth import authenticate
-from django.utils.translation import gettext_lazy as _
 
 class EmailAuthenticationForm(forms.Form):
     """

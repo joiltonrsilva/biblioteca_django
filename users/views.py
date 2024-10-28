@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 from .models import User, Profile
 from .forms import UserProfileForm, EmailAuthenticationForm
 
+# email: jeiel@gmail.com senha:12345678
+# email: joilton@gmail.com senha:12345678
 
 class Home(TemplateView):
     template_name = "home.html"
@@ -16,13 +18,14 @@ class Login(LoginView):
 
     def get_success_url(self):
         return self.request.GET.get('next', 'home')
+    
 
 
 class CreateUser(CreateView):
     model = Profile
     template_name = 'create_user.html'
     form_class = UserProfileForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("login")
 
     @transaction.atomic
     def form_valid(self, form):
