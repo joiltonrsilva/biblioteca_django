@@ -125,6 +125,9 @@ USE_TZ = True
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
+AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 

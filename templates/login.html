@@ -58,14 +58,14 @@
         
             <a href="#" class="btn-link-login" aria-label="Entrar como visitante">Entrar como visitante</a>
             <a href="{% url 'create-user'%}" class="btn-link-login" aria-label="Criar conta">Criar Conta</a>
-        </form>
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
+            {% if form.fields.errors %}
+            <div class="text-danger">
+                {% for error in form.fields.errors %}
+                <p>{{ error }}</p>
                 {% endfor %}
-            </ul>
-        {% endif %}
+            </div>
+            {% endif %}
+        </form>
         
     </div>
 </body>
