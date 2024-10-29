@@ -76,7 +76,7 @@
             </div>
             {% endif %}
         </div>
-        </div><div class="content-formulario">
+        <div class="content-formulario">
             <label for="{{ form.password_2.id_for_label }}" class="form-label">Confirme a Senha</label>
             {% render_field form.password_2 class="form-control" placeholder="confirme a senha" %}
             {% if form.password_2.errors %}
@@ -101,7 +101,7 @@
         </div>
 
 
-        <button type="submit" class=" login-caixa">Criar</button>
+        <button type="submit" class="login-caixa">Criar</button>
     </form>
     <div class="box-voltar"></div>
     <a class="voltar" href="{% url 'login' %}">

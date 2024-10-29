@@ -1,5 +1,6 @@
 from django.views.generic import CreateView, ListView, UpdateView, TemplateView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login as auth_login
 from django.db import transaction
 from django.urls import reverse_lazy
 from .models import User, Profile
@@ -14,8 +15,16 @@ class Login(LoginView):
     form_class = EmailAuthenticationForm
     template_name = 'login.html'
 
-    def get_success_url(self):
-        return self.request.GET.get('next', 'home')
+    redirect_authenticated_user = True
+
+    def form_valid(self, form):
+        user = form.get_user()
+        auth_login(self.request, user)
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        response = self.render_to_response(self.get_context_data(form=form))
+        return response
 
 
 class CreateUser(CreateView):
