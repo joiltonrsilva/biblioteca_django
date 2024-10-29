@@ -44,6 +44,7 @@ class UserForm(forms.ModelForm):
         return user
 
 class ProfileForm(forms.ModelForm):
+    
     birthday = forms.DateField(
         label='Data de Nascimento',
         widget=forms.DateInput(attrs={'type': 'date'}),

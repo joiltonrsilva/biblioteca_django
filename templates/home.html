@@ -22,6 +22,9 @@
 
 </head>
 <body>
+    {% csrf_token %}
+    {% load widget_tweaks %}
+    
 
     <!-- BARRAS DE MENU E SIDEBAR -->
 
@@ -51,7 +54,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
+                     <a href="{% url "perfil" %}">
                     <img src="{% static 'img/perfil.png' %}" alt="Imagem de perfil" class="img-perfil">
                     <h3 class="texto_perfil">Perfil</h3>
                     </a>
