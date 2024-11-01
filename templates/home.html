@@ -72,6 +72,11 @@
         <!-- <li><a href="#">sobre</a></li>
         <li><a href="#">contatos</a></li> -->
     </ul>
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    
 </div>
 
 <!-- BARRAS DE MENU E SIDEBAR -->

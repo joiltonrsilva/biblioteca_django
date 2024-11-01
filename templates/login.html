@@ -27,7 +27,7 @@
             alt="IMAGEM DA LOGO"
         >
         {% load widget_tweaks %}
-        <form action={% url 'login' %} method="POST" class="formulario-login">
+        <form action={% url 'login' %} method="GET" class="formulario-login">
             {% csrf_token %}
             <div class="content-formulario">
                 <label for="email" class="label"></label>
