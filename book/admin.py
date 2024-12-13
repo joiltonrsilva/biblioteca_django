@@ -11,7 +11,7 @@ class CategoryForm(forms.ModelForm):
 
     class Meta:
         model = Category
-        fiels = [
+        fields = [
             'name',
             'description'
         ]
@@ -90,7 +90,7 @@ class BookForm(forms.Form):
                 if books:
                     return self.add_error(None, 'Livro já existe')
             else:
-                books: QuerySet = Book.objects.filter.exclude(id=instance.id).(
+                books: QuerySet = Book.objects.exclude(id=instance.id).filter(
                     name=name,
                     author=author,
                     category=category

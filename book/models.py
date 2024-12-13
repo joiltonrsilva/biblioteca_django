@@ -64,3 +64,14 @@ class Category(models.Model):
         return self.name
     
 
+class ImageBook(models.Model):
+    path = models.ImageField(
+        verbose_name=_('Image'),
+        upload_to='book',
+    )
+    book: models.ForeignKey(
+        to='book.Book',
+        verbose_name=_('Book'),
+        on_delete=models.RESTRICT,
+        related_name='imagebook_book_book',
+    )
