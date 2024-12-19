@@ -67,11 +67,19 @@ class Category(models.Model):
 class ImageBook(models.Model):
     path = models.ImageField(
         verbose_name=_('Image'),
-        upload_to='book',
+        upload_to='books',
     )
-    book: models.ForeignKey(
+    book =  models.ForeignKey(
         to='book.Book',
         verbose_name=_('Book'),
         on_delete=models.RESTRICT,
         related_name='imagebook_book_book',
     )
+
+    class Meta:
+        ordering = ["-id"]
+        verbose_name = _('Image Book')
+        verbose_name_plural = _('Images Books')
+
+    def __str__(self):
+        return self.id

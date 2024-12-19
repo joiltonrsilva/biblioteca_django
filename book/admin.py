@@ -3,8 +3,9 @@ from typing import Any
 from django.contrib import admin
 from django.db.models import QuerySet
 from django import forms
+from django_admin_inline_paginator.admin import TabularInlinePaginated
 
-from .models import Book, Category
+from .models import Book, Category, ImageBook
 
 
 class CategoryForm(forms.ModelForm):
@@ -105,3 +106,42 @@ class BookForm(forms.Form):
                     )
 
         return cleaned_data
+
+
+class ImageBookInline(TabularInlinePaginated):
+
+    fields = (
+        'id',
+        'path',
+    )
+    per_page = 10
+    model = ImageBook
+    extra = 1
+    classes = ('collapse',)
+
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    forms = BookForm
+    # inlines = [ImageBookInline]
+
+    list_display = (
+        'id',
+        'name',
+        'description',
+        'author',
+        'category',
+        'quantity_registred',
+        'loan_quantity',
+        'created',
+        'last_modified',
+    )
+
+    list_filter = (
+        'author',
+    )
+    search_fields = (
+        'name__istartswitch',
+        'description__istartswitch',
+    )
+    
